@@ -1,6 +1,4 @@
 //Trevor Jenkins
-//T3672510
-//TR566203
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,7 +42,6 @@ int main (void) {
 			//single char strings
 			*str = puzzle->grid[row][col];
 			checkString(dict, str);
-			//printf("S-C str %d: %s\n",row + 1, str);
 			
 			//build strings horizontally-right
 			for (i = 1; i < puzzle->width; i++) {
@@ -53,7 +50,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row][col + i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("H-R str %d: %s\n", i, str);
 				}
 			}
 			
@@ -69,7 +65,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row][col - i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("H-L str %d: %s\n", i, str);
 				}
 			}
 			
@@ -84,7 +79,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row + i][col];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("V-D str %d: %s\n", i, str);
 				}
 			}
 			
@@ -95,12 +89,11 @@ int main (void) {
 			
 			//build strings vertically-up
 			for (i = 1; i < puzzle->height; i++) {
-				//why is this >=? top row of puzzle (height/width ints)hindering correct reading?
+				//why is this >=? top row of puzzle (height/width ints) hindering correct reading?
 				if (row - i >= 0) {
 					temp[0] = puzzle->grid[row - i][col];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("V-U str %d: %s\n", i, str);
 				}
 			}
 			
@@ -115,7 +108,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row - i][col - i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("Dg-UL str %d: %s\n", i, str);
 				}
 			}
 			
@@ -130,7 +122,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row - i][col + i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("Dg-UR str %d: %s\n", i, str);
 				}
 			}
 			
@@ -145,7 +136,6 @@ int main (void) {
 					temp[0] = puzzle->grid[row + i][col - i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("Dg-DL str %d: %s\n", i, str);
 				}
 			}
 			
@@ -159,11 +149,10 @@ int main (void) {
 					temp[0] = puzzle->grid[row + i][col + i];
 					str = strcat(str, temp);
 					checkString(dict, str);
-					//printf("Dg-DR str %d: %s\n", i, str);
 				}
 			}
-		}
-	}
+		}//end [col] for loop
+	}//end [row] for loop
 	
 	for (i = 0; i < dict->size; i++) {
 		if (dict->counts[i] > 0) {
